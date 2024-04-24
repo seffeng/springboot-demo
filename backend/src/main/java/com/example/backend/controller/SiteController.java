@@ -1,8 +1,13 @@
 package com.example.backend.controller;
 
 import com.example.common.constant.StatusConst;
+import com.example.common.module.admin.model.Admin;
+import com.example.common.module.admin.service.AdminService;
+import io.github.seffeng.basics.base.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -14,6 +19,9 @@ public class SiteController {
 
     @Value("${spring.application.env}")
     private String environment;
+
+    @Autowired
+    private AdminService adminService;
 
     @GetMapping("")
     public String index() {
@@ -29,10 +37,18 @@ public class SiteController {
     }
 
     @GetMapping("view/{id}")
-    public String view(@PathVariable(value = "id") Long id) {
-        if (id == StatusConst.NORMAL.getId().longValue()) {
-            return "Hello " + id + " 与常量匹配！";
+    public Response view(@PathVariable(value = "id") Long id) {
+        Admin admin = adminService.getById(id);
+        if (Objects.isNull(admin)) {
+            return Response.error("用户不存在！");
         }
-        return "Hello " + id + '！';
+        return Response.success(admin);
+    }
+
+    @GetMapping("list")
+    public List<Admin> list() {
+        List<Admin> admins = adminService.list();
+        System.out.println("-------" + admins.size());
+        return admins;
     }
 }

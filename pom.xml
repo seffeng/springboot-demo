@@ -32,6 +32,9 @@
         <frontend.version>0.0.1-SNAPSHOT</frontend.version>
         <console.version>0.0.1-SNAPSHOT</console.version>
         <scheduled.version>0.0.1-SNAPSHOT</scheduled.version>
+        <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
+        <mybatis-plus.version>3.5.6</mybatis-plus.version>
+        <seffeng-basics.version>0.1.1</seffeng-basics.version>
     </properties>
 
     <dependencyManagement>
@@ -65,6 +68,24 @@
                 <artifactId>scheduled</artifactId>
                 <version>${scheduled.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector-j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.seffeng</groupId>
+                <artifactId>basics</artifactId>
+                <version>${seffeng-basics.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -97,6 +118,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.seffeng</groupId>
+            <artifactId>basics</artifactId>
         </dependency>
     </dependencies>
 
