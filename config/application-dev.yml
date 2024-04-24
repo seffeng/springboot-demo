@@ -1,0 +1,8 @@
+spring:
+  application:
+    env: dev
+    debug: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: homestead
+    password: secret
