@@ -2,7 +2,25 @@ spring:
   application:
     env: dev
     debug: true
+    name: 测试配置
+    profiles:
+      - profile1
+      - profile2
+      - profile3
+    properties:
+      name: test
+    myapp:
+      id: 100
+      name: app100
   datasource:
     url: jdbc:mysql://localhost:3306/test
     username: homestead
     password: secret
+
+testconfig:
+  appA:
+    id: 111
+    name: name111
+  appB:
+    id: 222
+    name: name222
